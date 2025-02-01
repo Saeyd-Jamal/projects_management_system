@@ -3,7 +3,22 @@
     <x-slot:breadcrumb>
         <li><a href="#">الرئيسية</a></li>
     </x-slot:breadcrumb>
-    <h2 class="mt-4 h3">الإحصائيات</h2>
+    
+    <div class="d-flex justify-content-between p-3 align-items-start">
+        <h2 class="mt-4 h3">الإحصائيات</h2>
+        <div>
+            @can('allocation','App\\Models\AccreditationProject')
+            <a href="{{route('dashboard.accreditations.create')}}" class="btn btn-primary m-0 me-2">
+                <i class="fa-solid fa-plus"></i> إضافة تخصيص
+            </a>
+            @endcan
+            @can('execution','App\\Models\AccreditationProject')
+            <a href="{{route('dashboard.accreditations.createExecutive')}}" class="btn btn-info m-0">
+                <i class="fa-solid fa-plus"></i> إضافة تنفيذ
+            </a>
+            @endcan
+        </div>
+    </div>
     <div class="row mt-4">
         <div class="col-md-4 mb-4">
             <div class="card shadow bg-info">
@@ -226,20 +241,5 @@
                 </div>
             </div>
         </div>
-    </div>
-    <h2 class="mt-2 h3">العام</h2>
-    <div class="row mt-4">
-        {{-- @can('create', 'App\\Models\AccreditationProject')
-        <div class="col-lg-3 col-sm-6 mb-lg-0 mb-4">
-            <div class="card">
-                <div class="card-body p-3">
-                    <a href="{{ route('dashboard.accreditations.create') }}" class="d-flex flex-column align-items-center p-3">
-                        <i class="fe fe-plus" style="font-size: 65px;"></i>
-                        <h3> إضافة مشروع جديد</h3>
-                    </a>
-                </div>
-            </div>
-        </div>
-        @endcan --}}
     </div>
 </x-front-layout>
